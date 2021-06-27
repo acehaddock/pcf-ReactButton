@@ -1,6 +1,15 @@
 import {IInputs, IOutputs} from "./generated/ManifestTypes";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { ButtonAnchor, IPCFButtonProps } from './PCFButton';
 
 export class pcfReactButton implements ComponentFramework.StandardControl<IInputs, IOutputs> {
+	private theContainer: HTMLDivElement;
+	private props: IPCFButtonProps = {
+		//tableValue: this.numberFacesChanged.bind(this),
+		buttonValue: "",
+		buttonLink: ""
+	}
 
 	/**
 	 * Empty constructor.
@@ -21,6 +30,9 @@ export class pcfReactButton implements ComponentFramework.StandardControl<IInput
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
 	{
 		// Add control initialization code
+
+		this.theContainer = container;
+		//this.notifyOutputChanged = notifyOutputChanged;
 	}
 
 
@@ -31,6 +43,16 @@ export class pcfReactButton implements ComponentFramework.StandardControl<IInput
 	public updateView(context: ComponentFramework.Context<IInputs>): void
 	{
 		// Add code to update control view
+
+		this.props.buttonValue = context.parameters.buttonValue.raw!;
+		this.props.buttonLink = context.parameters.buttonLink.raw!;
+		ReactDOM.render(
+			React.createElement(
+				ButtonAnchor,
+				this.props
+			),
+			this.theContainer
+		);
 	}
 
 	/**
@@ -49,5 +71,7 @@ export class pcfReactButton implements ComponentFramework.StandardControl<IInput
 	public destroy(): void
 	{
 		// Add code to cleanup control if necessary
+		
+		ReactDOM.unmountComponentAtNode(this.theContainer);
 	}
 }
