@@ -10,8 +10,7 @@ export interface IPCFButtonProps {
      // {props.buttonValue}
 export const ButtonAnchor: React.FunctionComponent<IPCFButtonProps> = props => {
   return (
-    <PrimaryButton href={props.buttonLink} target="_blank">
-      {props.buttonLabel}
+    <PrimaryButton href={props.buttonLink} target="_blank">{props.buttonLabel}
     </PrimaryButton>
   );
 };
