@@ -7,7 +7,7 @@ export class pcfReactButton implements ComponentFramework.StandardControl<IInput
 	private theContainer: HTMLDivElement;
 	private props: IPCFButtonProps = {
 		//tableValue: this.numberFacesChanged.bind(this),
-		buttonValue: "",
+		//buttonValue: "",
 		buttonLabel: "",
 		buttonLink: ""
 	}
