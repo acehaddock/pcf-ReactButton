@@ -8,6 +8,7 @@ export class pcfReactButton implements ComponentFramework.StandardControl<IInput
 	private props: IPCFButtonProps = {
 		//tableValue: this.numberFacesChanged.bind(this),
 		buttonValue: "",
+		buttonLabel: "",
 		buttonLink: ""
 	}
 
@@ -44,7 +45,8 @@ export class pcfReactButton implements ComponentFramework.StandardControl<IInput
 	{
 		// Add code to update control view
 
-		this.props.buttonValue = context.parameters.buttonValue.raw!;
+		//this.props.buttonValue = context.parameters.buttonValue.raw!;
+		this.props.buttonLabel = context.parameters.buttonLabel.raw!;
 		this.props.buttonLink = context.parameters.buttonLink.raw!;
 		ReactDOM.render(
 			React.createElement(
